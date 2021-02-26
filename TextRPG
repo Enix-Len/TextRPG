@@ -1,0 +1,82 @@
+print ('SUPER JOGO DE TEXTO')
+verdadeiro = True
+class jogador:
+    vida = int(0)
+    dano = int(0)
+    armadura = int(0)
+    carteira = int(0)
+    exp = int(0)
+    pocao = int(0)
+    def guerreiro(self):
+        self.vida = 150
+        self.dano = 20
+        self.armadura = 10
+        self.pocao = 5
+    def cura(self):
+        self.vida = self.vida + 50
+        self.pocao = self.pocao - 1
+print ('classe desejada')
+classe = str(input())
+jogador1 = jogador()
+if (classe == 'guerreiro'):
+    jogador1.guerreiro()
+    print ('sua vida é ', jogador1.vida)
+    print ('seu dano é ', jogador1.dano)
+    print ('sua armadura é ', jogador1.armadura)
+    print ('você é um guerreiro!')
+class inimigo:
+    vida = int(0)
+    dano = int(0)
+    armadura = int(0)
+    gold = int(0)
+    exp = int(0)
+    def orc(self):
+        self.vida = 100
+        self.dano = 20
+        self.armadura = 0
+        self.gold = 10
+        self.exp = 20
+    def humano(self):
+        self.vida = 50
+        self.dano = 20
+        self.armadura = 0
+        self.gold = 5
+        self.exp = 10
+    def atacarini(self):
+        self.vida = self.vida - jogador1.dano
+print ('você esta passeando pelo bosque e vê um orc')
+
+class batalha:
+    def luta(self):
+        inimigovivo = True
+        while inimigovivo:
+            print ('Oq vai fazer?')
+            acao = input()
+            inimigo1.atacarini()
+            if (acao == 'atacar'):
+                if (inimigo1.vida > 0):
+                    jogador1.vida = jogador1.vida - inimigo1.dano
+                    print ('você ataca com ', jogador1.dano, 'de dano')
+                    print ('vida do inimigo: ', inimigo1.vida)
+                    print ('o inimigo revida com ', inimigo1.dano, ' de dano')
+                    print ('sua vida: ', jogador1.vida)
+                else :
+                    jogador1.carteira = jogador1.carteira + inimigo1.gold
+                    jogador1.exp = jogador1.exp + inimigo1.exp
+                    print('inimigo morto!')
+                    print('experiência ganha: ', inimigo1.exp)
+                    print('ouro ganho: ', inimigo1.gold)
+                    inimigovivo = False
+            if (acao == 'curar'):
+                if (jogador1.pocao > 0):
+                    jogador1.cura()
+                    print (jogador1.vida)
+inimigo1 = inimigo()
+inimigo1.orc()
+luta1 = batalha()
+luta1.luta()
+print('após matar o orc você vê um humano')
+inimigo1.humano()
+luta1.luta()
+while verdadeiro:
+    lol = input()
